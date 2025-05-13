@@ -1,15 +1,15 @@
 import uuid
-import getpass
+import pwinput
 import json
 import os
 
-DATABASE_PATH = os.path.join("database", "admin_data.json")
+DATABASE_PATH = r"C:\restaurant_management\Restaurant_management_system\Src\Authentication\admins.json"
 
 def is_alpha_only(text):
     return text.isalpha()
 
 def is_valid_email(email):
-    return ("@" in email and ".com" in email and not email.isdigit())
+    return ("@"in email and ".com"in email and not email.isdigit())
 
 def is_valid_password(password):
     has_letter = False
@@ -59,10 +59,10 @@ def admin_signup():
         email = input("Enter Email ID: ")
     admin['email'] = email
 
-    password = getpass.getpass("Create Password: ")
+    password = pwinput(prompt="Enter password",mask="#")
     while not is_valid_password(password):
         print(" Password must have letters, numbers, and special characters.")
-        password = getpass.getpass("Create Password: ")
+        password = pwinput(prompt="Enter password",mask="#").getpass("Create Password: ")
     admin['password'] = password
 
     contact = input("Enter Contact Number: ")
@@ -84,7 +84,7 @@ def admin_signup():
 
 def admin_login():
     email = input("Enter Email ID: ")
-    password = getpass.getpass("Enter Password: ")
+    password = pwinput.pwinput(prompt = "Enter password",mask="#")
 
     data = load_data()
     for admin in data:
