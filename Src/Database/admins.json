@@ -1,0 +1,18 @@
+[
+    {
+        "id": "f745a2a8-d1a1-4e07-b2be-6665a628545e",
+        "name": "Rohit",
+        "email": "rk1947766@gmail.com",
+        "password": "Rohit@88888",
+        "contact": "9661533650",
+        "address": "Narayanpur"
+    },
+    {
+        "id": "d29d69e0-c6ba-4124-be37-e36d32614076",
+        "name": "zaib",
+        "email": "zaib@gmail.com",
+        "password": "Zaib@123",
+        "contact": "9801948741",
+        "address": "Mirganj"
+    }
+]
