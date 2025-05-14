@@ -1,5 +1,4 @@
 import uuid
-import getpass
 import json
 import os
 
@@ -49,49 +48,49 @@ def staff_signup():
 
     name = input("Enter Staff Name: ")
     while not is_alpha_only(name):
-        print("❌ Name must contain only letters.")
+        print(" Name must contain only letters.")
         name = input("Enter Staff Name: ")
     staff['name'] = name
 
     email = input("Enter Email ID: ")
     while not is_valid_email(email):
-        print("❌ Invalid email format.")
+        print(" Invalid email format.")
         email = input("Enter Email ID: ")
     staff['email'] = email
 
-    password = getpass.getpass("Create Password: ")
+    password = pwinput.pwinput(prompt="Enter password",mask="#")
     while not is_valid_password(password):
-        print("❌ Password must have letters, numbers, and special characters.")
-        password = getpass.getpass("Create Password: ")
+        print(" Password must have letters, numbers, and special characters.")
+        password = pwinput.pwinput(prompt="Enter password",mask="#")
     staff['password'] = password
 
     contact = input("Enter Contact Number: ")
     while not is_valid_contact(contact):
-        print("❌ Invalid contact number.")
+        print(" Invalid contact number.")
         contact = input("Enter Contact Number: ")
     staff['contact'] = contact
 
     address = input("Enter Address: ")
     while not is_valid_address(address):
-        print("❌ Invalid address. No special characters allowed except comma.")
+        print(" Invalid address. No special characters allowed except comma.")
         address = input("Enter Address: ")
     staff['address'] = address
 
     data = load_data()
     data.append(staff)
     save_data(data)
-    print("✅ Staff registered successfully!\n")
+    print("Staff registered successfully!\n")
 
 def staff_login():
     email = input("Enter Email ID: ")
-    password = getpass.getpass("Enter Password: ")
+    password = pwinput.pwinput(prompt="Enter password",mask="#")
 
     data = load_data()
     for staff in data:
         if staff['email'] == email and staff['password'] == password:
-            print(f"\n✅ Welcome {staff['name']} to Staff Dashboard!\n")
+            print(f"\n Welcome {staff['name']} to Staff Dashboard!\n")
             return True
-    print("❌ Invalid credentials.")
+    print(" Invalid credentials.")
     return False
 
 def staff_menu():
@@ -110,4 +109,4 @@ def staff_menu():
         elif choice == "0":
             break
         else:
-            print("❌ Invalid option.")
+            print(" Invalid option.")

@@ -59,10 +59,11 @@ def admin_signup():
         email = input("Enter Email ID: ")
     admin['email'] = email
 
-    password = pwinput(prompt="Enter password",mask="#")
+    password = pwinput.pwinput(prompt="Enter password", mask="#")  
+
     while not is_valid_password(password):
         print(" Password must have letters, numbers, and special characters.")
-        password = pwinput(prompt="Enter password",mask="#").getpass("Create Password: ")
+        password =pwinput.pwinput(prompt="Create Password: ", mask="#")  
     admin['password'] = password
 
     contact = input("Enter Contact Number: ")
